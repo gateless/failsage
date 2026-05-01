@@ -1,5 +1,9 @@
 This is a history of changes to gateless/failsage
 
+# 0.3.2 - 2026-05-01
+
+* Bump futurama dependency to 1.4.5, replace uses of ExecutorService with Executor.
+
 # 0.3.1 - 2025-10-28
 
 * Bump futurama dependency to 1.4.1 to include latest fixes.

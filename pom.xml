@@ -5,9 +5,9 @@
   <groupId>com.github.gateless</groupId>
   <artifactId>failsage</artifactId>
   <name>failsage</name>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
   <scm>
-    <tag>0.3.1</tag>
+    <tag>0.3.2</tag>
     <url>https://github.com/gateless/failsage</url>
     <connection>scm:git:git://github.com/gateless/failsage.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/gateless/failsage.git</developerConnection>
