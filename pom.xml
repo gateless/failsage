@@ -22,12 +22,12 @@
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.12.3</version>
+      <version>1.12.4</version>
     </dependency>
     <dependency>
       <groupId>com.github.gateless</groupId>
       <artifactId>futurama</artifactId>
-      <version>1.4.1</version>
+      <version>1.4.5</version>
     </dependency>
     <dependency>
       <groupId>dev.failsafe</groupId>
