@@ -9,7 +9,7 @@
     CheckedPredicate
     CheckedRunnable
     ContextualSupplier]
-   [java.util.concurrent ExecutorService]))
+   [java.util.concurrent Executor]))
 
 (deftype FailsafeCheckedRunnable [f]
   CheckedRunnable
@@ -66,7 +66,7 @@
 (defn get-pool
   "Returns a Failsafe-compatible thread pool. If `pool` is a keyword, looks up the pool using `futurama.core/get-pool`.
   Otherwise, returns the provided pool, a default thread pool, or falls back to `futurama.core/get-pool :io`."
-  ^ExecutorService [pool]
+  ^Executor [pool]
   (if (keyword? pool)
     (f/get-pool pool)
     (or pool f/*thread-pool* (f/get-pool :io))))

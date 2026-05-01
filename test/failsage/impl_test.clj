@@ -9,7 +9,7 @@
     ExecutionContext
     Failsafe
     RetryPolicy]
-   [java.util.concurrent ExecutorService]))
+   [java.util.concurrent Executor]))
 
 ;; EventListener Converter Tests
 
@@ -110,10 +110,10 @@
 (deftest test-get-pool-with-keyword
   (testing "get-pool returns a pool for keyword"
     (let [pool (impl/get-pool :io)]
-      (is (instance? ExecutorService pool)))))
+      (is (instance? Executor pool)))))
 
 (deftest test-get-pool-with-executor-service
-  (testing "get-pool returns the provided ExecutorService"
+  (testing "get-pool returns the provided Executor"
     (let [custom-pool (f/get-pool :io)
           result (impl/get-pool custom-pool)]
       (is (identical? custom-pool result)))))
@@ -121,13 +121,13 @@
 (deftest test-get-pool-with-nil
   (testing "get-pool returns default pool when nil is provided"
     (let [pool (impl/get-pool nil)]
-      (is (instance? ExecutorService pool)))))
+      (is (instance? Executor pool)))))
 
 (deftest test-get-pool-falls-back-to-io
   (testing "get-pool falls back to :io pool when no pool is bound"
     (binding [f/*thread-pool* nil]
       (let [pool (impl/get-pool nil)]
-        (is (instance? ExecutorService pool))))))
+        (is (instance? Executor pool))))))
 
 ;; Execute Tests
 
@@ -223,7 +223,7 @@
 
 (deftest test-execute-get-async-basic
   (testing "execute-get-async executes an async function"
-    (let [executor (.with (Failsafe/none) ^ExecutorService (f/get-pool :io))
+    (let [executor (.with (Failsafe/none) ^Executor (f/get-pool :io))
           result (impl/execute-get-async executor
                                          (fn [_]
                                            42))]
@@ -231,7 +231,7 @@
 
 (deftest test-execute-get-async-with-exception
   (testing "execute-get-async handles exceptions"
-    (let [executor (.with (Failsafe/none) ^ExecutorService (f/get-pool :io))
+    (let [executor (.with (Failsafe/none) ^Executor (f/get-pool :io))
           result (impl/execute-get-async executor
                                          (fn [_]
                                            (throw (ex-info "async error" {}))))]
@@ -240,7 +240,7 @@
 
 (deftest test-execute-get-async-with-context
   (testing "execute-get-async passes AsyncExecution context to function"
-    (let [executor (.with (Failsafe/none) ^ExecutorService (f/get-pool :io))
+    (let [executor (.with (Failsafe/none) ^Executor (f/get-pool :io))
           received-context (atom nil)
           result (impl/execute-get-async executor
                                          (fn [ctx]
